@@ -1,7 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../specific/UserContext";
 
 const Footer = () => {
+  const { cid, setCid } = useUser();
+  const logout = () => {
+    localStorage.removeItem("jwt_token");
+
+    setCid(null);
+
+    window.location.href = "/login";
+  };
   return (
     <footer className="bg-gray-800 text-gray-200">
       <div className="container mx-auto px-6 py-10">
@@ -39,9 +48,20 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/login" className="hover:text-blue-400">
+              {cid ? (
+              <>
+                <button onClick={logout}>LOGOUT</button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="hover:text-gray-400">
                   Login
                 </Link>
+                <Link to="/register" className="hover:text-gray-400">
+                  Register
+                </Link>
+              </>
+          )}
               </li>
             </ul>
           </div>
