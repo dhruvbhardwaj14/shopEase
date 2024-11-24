@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       try {
         const ACCESS_KEY = "V8FO5gocZA_MOFwq6xtAOWnr5OUkzFp3CnSxjBchQ1k"; // Replace with your actual Unsplash Access Key
         const response = await fetch(
-          `https://api.wwunsplash.com/search/photos?query=${product.pname}&per_page=1`,
+          `https://api.unsplash.com/search/photos?query=${product.pname}&per_page=1`,
           {
             headers: {
               Authorization: `Client-ID ${ACCESS_KEY}`,
