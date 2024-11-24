@@ -4,8 +4,10 @@ const Filters = ({ filters, onFilterChange }) => {
   const [localFilters, setLocalFilters] = useState(filters);
 
   const handleCategoryChange = (e) => {
-    setLocalFilters({ ...localFilters, category: e.target.value });
-    onFilterChange({ ...localFilters, category: e.target.value });
+    const newCategory = e.target.value;
+    const updatedFilters = { ...localFilters, category: newCategory };
+    setLocalFilters(updatedFilters);
+    onFilterChange(updatedFilters); // Pass the updated filters after state update
   };
 
   const handlePriceChange = (e) => {
@@ -26,9 +28,10 @@ const Filters = ({ filters, onFilterChange }) => {
           onChange={handleCategoryChange}
         >
           <option value="">All</option>
-          <option value="electronics">Electronics</option>
-          <option value="fashion">Fashion</option>
-          <option value="home">Home</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Clothing">Fashion</option>
+          <option value="Home Appliances">Home Appliances</option>
+          <option value="Books">Books</option>
         </select>
       </div>
       {/* Price Filter */}
@@ -38,7 +41,7 @@ const Filters = ({ filters, onFilterChange }) => {
           className="w-full p-2 border border-gray-300 rounded"
           onChange={handlePriceChange}
         >
-          <option value="0-1000">All</option>
+          <option value="0-1000000">All</option>
           <option value="0-100">$0 - $100</option>
           <option value="100-500">$100 - $500</option>
           <option value="500-1000">$500 - $1000</option>

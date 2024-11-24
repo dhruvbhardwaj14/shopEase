@@ -2,14 +2,18 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../specific/CartContext"; // Import CartContext
 import { OrderContext } from "../specific/OrderContext"; // Import OrderContext
+import { useUser } from "./UserContext";
 
 const ShippingForm = () => {
   const navigate = useNavigate();
   const { cart } = useContext(CartContext); // Get cart from CartContext
   const { addOrder } = useContext(OrderContext); // Get addOrder from OrderContext
-
+  const { cid } = useUser();
   // Calculate total amount
-  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   // Local state for shipping details
   const [shippingDetails, setShippingDetails] = useState({
@@ -29,21 +33,35 @@ const ShippingForm = () => {
     }));
   };
 
-  const handleCompleteOrder = () => {
-    // Prepare the order object
-    const order = {
-      id: Date.now().toString(), // Unique order ID
-      total: totalAmount, // Total amount
-      items: cart, // Cart items
-      shippingDetails, // Shipping details
-    };
+  const handleCompleteOrder = async () => {
+    try {
+      // Prepare the order data to send to the backend
+      const orderData = {
+        cid: cid, // Assuming customerId is stored somewhere (context, state, etc.)
+      };
+      // Make a POST request to the backend to place the order
+      const response = await fetch("http://localhost:3306/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
 
-    addOrder(order); // Add the order to OrderContext
+      if (!response.ok) {
+        throw new Error("Failed to place order");
+      }
 
-    // Navigate to OrdersPage
-    navigate("/orders");
+      // Parse the response if needed
+      const data = await response.json();
+      console.log(data.message); // Optionally log the success message from the backend
+
+      // Navigate to the Orders page after placing the order
+      navigate("/orders");
+    } catch (error) {
+      console.error("Error placing order:", error.message);
+    }
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     handleCompleteOrder();

@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 
 const CheckoutPage = () => {
   const { cart } = useContext(CartContext);
-  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalAmount = cart.reduce(
+    (sum, item) => sum + item.pprice * item.cqty,
+    0
+  );
   return (
     <div className="container mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">Checkout</h1>
@@ -24,10 +27,7 @@ const CheckoutPage = () => {
           <PaymentOptions />
         </div>
       </div>
-      <Link
-        to="/cart"
-        className="block text-blue-500 mt-4 hover:underline"
-      >
+      <Link to="/cart" className="block text-blue-500 mt-4 hover:underline">
         Go back to Cart
       </Link>
     </div>

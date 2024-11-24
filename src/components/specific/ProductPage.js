@@ -4,7 +4,10 @@ import Filters from "../specific/Filters";
 import Pagination from "../specific/Pagination";
 
 const ProductPage = () => {
-  const [filters, setFilters] = useState({ category: "", priceRange: [0, 1000] });
+  const [filters, setFilters] = useState({
+    category: "",
+    priceRange: [0, 1000],
+  });
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleFilterChange = (newFilters) => {

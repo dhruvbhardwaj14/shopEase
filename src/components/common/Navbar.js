@@ -1,11 +1,21 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../specific/CartContext";
+import { useUser } from "../specific/UserContext";
 
 const Navbar = () => {
+  const { cid, setCid } = useUser();
   const { cart } = useContext(CartContext);
 
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartCount = cart.reduce((sum, item) => sum + item.cqty, 0);
+
+  const logout = () => {
+    localStorage.removeItem("jwt_token");
+
+    setCid(null);
+
+    window.location.href = "/login";
+  };
 
   return (
     <nav className="bg-gray-800 text-white p-4">
@@ -23,12 +33,20 @@ const Navbar = () => {
           <Link to="/cart" className="hover:text-gray-400">
             Cart ({cartCount})
           </Link>
-          <Link to="/login" className="hover:text-gray-400">
-            Login
-          </Link>
-          <Link to="/register" className="hover:text-gray-400">
-            Register
-          </Link>
+          {cid ? (
+            <>
+              <button onClick={logout}>LOGOUT</button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="hover:text-gray-400">
+                Login
+              </Link>
+              <Link to="/register" className="hover:text-gray-400">
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </nav>
