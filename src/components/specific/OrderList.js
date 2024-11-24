@@ -13,11 +13,11 @@ const OrderList = ({ orders, onOrderClick }) => {
             onClick={() => onOrderClick(order)}
           >
             <p>
-              <span className="font-semibold">Order ID:</span> {order.id}
+              <span className="font-semibold">Order ID:</span> {order.oid}
             </p>
             <p>
-              <span className="font-semibold">Total:</span> $
-              {order.total.toFixed(2)}
+              <span className="font-semibold">Total:</span> &#8377;
+              {order.oamt.toFixed(2)}
             </p>
           </li>
         ))}
