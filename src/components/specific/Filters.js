@@ -41,10 +41,10 @@ const Filters = ({ filters, onFilterChange }) => {
           className="w-full p-2 border border-gray-300 rounded"
           onChange={handlePriceChange}
         >
-          <option value="0-1000000">All</option>
-          <option value="0-100">0 - 100</option>
-          <option value="100-500">100 - 500</option>
-          <option value="500-1000">500 - 1000</option>
+          <option value="0-100000">All</option>
+          <option value="0-1000">0 - 1000</option>
+          <option value="1000-10000">1000 - 10000</option>
+          <option value="10000-100000">10000 - 100000</option>
         </select>
       </div>
     </div>
