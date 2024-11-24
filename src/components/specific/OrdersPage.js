@@ -32,8 +32,11 @@ const OrdersPage = () => {
         </div>
       ) : (
         <>
-          <h1 className="text-3xl mb-6">Please Login First </h1>
-          <Link to="/login" className="hover:text-gray-400">
+          <h1 className="text-3xl mb-6 text-red-600 font-bold bg-red-100 border border-red-500 rounded-md p-4">
+          Please Login First
+        </h1>
+
+          <Link to="/login" className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
             Login
           </Link>
         </>

@@ -42,9 +42,9 @@ const Filters = ({ filters, onFilterChange }) => {
           onChange={handlePriceChange}
         >
           <option value="0-1000000">All</option>
-          <option value="0-100">$0 - $100</option>
-          <option value="100-500">$100 - $500</option>
-          <option value="500-1000">$500 - $1000</option>
+          <option value="0-100">0 - 100</option>
+          <option value="100-500">100 - 500</option>
+          <option value="500-1000">500 - 1000</option>
         </select>
       </div>
     </div>

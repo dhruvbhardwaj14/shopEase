@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
@@ -22,6 +23,7 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     try {
       const response = await axios.post(" http://localhost:3306/signup", {
@@ -34,6 +36,7 @@ const Register = () => {
         caddr_pincode: formData.pincode,
       });
       alert(response.data.message || "Signup successful!");
+      navigate('/login');
     } catch (error) {
       console.error(error);
       alert(error.response?.data?.error || "An error occurred during signup.");

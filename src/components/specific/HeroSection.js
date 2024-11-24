@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import heroImage from '../../assets/PNG/heroImage.png'
 const HeroSection = () => {
   return (
     <div className="relative bg-blue-500 text-white rounded-lg overflow-hidden shadow-lg">
       <img
-        src="https://via.placeholder.com/1200x400?text=Shop+The+Latest+Trends"
+        src={heroImage}
         alt="Hero Banner"
         className="w-full h-64 sm:h-96 object-cover opacity-70"
       />

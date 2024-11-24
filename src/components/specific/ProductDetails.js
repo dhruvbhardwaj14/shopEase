@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { CartContext } from "../specific/CartContext";
 import { useUser } from "./UserContext";
 const ProductDetails = ({ product }) => {
   const [imageSrc, setImageSrc] = useState("");
-  const { id } = useParams();
   const { addToCart } = useContext(CartContext);
   const { cid } = useUser();
 
@@ -58,7 +57,7 @@ const ProductDetails = ({ product }) => {
           {product.pname}
         </h1>
         <p className="text-xl text-blue-600 font-semibold mb-4">
-          ${product.pprice}
+        ₹{product.pprice}
         </p>
         <p className="text-gray-600 mb-6">{product.description}</p>
         {cid ? (
@@ -70,8 +69,8 @@ const ProductDetails = ({ product }) => {
           </button>
         ) : (
           <>
-            <h1 className="text-3xl mb-6">Please Login First to Add to Cart</h1>
-            <Link to="/login" className="hover:text-gray-400">
+            <h1 className="text-3xl mb-6 text-red-600 font-bold bg-red-100 border border-red-500 rounded-md p-4">Please Login First to Add to Cart</h1>
+            <Link to="/login" className="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
               Login
             </Link>
           </>
