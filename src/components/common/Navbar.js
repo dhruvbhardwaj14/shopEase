@@ -31,7 +31,7 @@ const Navbar = () => {
             Products
           </Link>
           <Link to="/cart" className="hover:text-gray-400">
-            Cart ({cartCount})
+            {cid?`Cart (${cartCount})`:"Cart"}
           </Link>
           {cid ? (
             <>

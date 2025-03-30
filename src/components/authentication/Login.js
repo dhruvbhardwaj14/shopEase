@@ -29,6 +29,7 @@ const Login = () => {
         localStorage.setItem("jwt_token", data.token);
         // Navigate to a protected route or home page
         navigate("/");
+        window.location.reload();
       } else {
         // Display error message from the server
         setErrorMessage(data.message || "An error occurred");

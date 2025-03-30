@@ -58,6 +58,7 @@ const ShippingForm = () => {
 
       // Navigate to the Orders page after placing the order
       navigate("/orders");
+      window.location.reload();
     } catch (error) {
       console.error("Error placing order:", error.message);
     }

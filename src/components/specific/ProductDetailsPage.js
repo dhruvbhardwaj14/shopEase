@@ -23,6 +23,7 @@ const ProductDetailsPage = () => {
         setLoading(false); // Set loading to false after error occurs
       }
     };
+    window.scrollTo(0, 0);
 
     fetchProduct(); // Fetch product when component mounts
   }, [id]);
