@@ -183,4 +183,4 @@ npm start
 
 ---
 
-✨ Developed by **Dhruv Bhardwaj**  
+✨ Developed by **Dhruv Bhardwaj, Bhadane Amey Ravindra and Aditya Rana**  
