@@ -29,9 +29,6 @@ A full-stack e-commerce web application where users can explore, search, and pur
 - Node.js (Runtime)  
 - Express.js (4.21.1)  
 - MySQL (via phpMyAdmin v4.7.1)  
-- bcryptjs (2.4.3) for password hashing  
-- CORS (2.8.5)  
-- Nodemon (3.1.7)  
 
 ### **Database**  
 - MySQL (phpMyAdmin)  
